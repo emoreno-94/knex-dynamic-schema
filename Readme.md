@@ -21,7 +21,7 @@ var dynamicPg = require('./dynamicPg')(knex, schemaName);   //schemaNema -> nomb
 
 ### Métodos ###
 *Importante: Todos los métodos se concatenan en base a promesas*
-## Métodos para el esquema ##
+#### Métodos para el esquema ####
 ```javascript
 //Crea la tabla correspondiente en la base de datos
 dynamicPg.createTable({
@@ -73,7 +73,7 @@ Tipos soportados por el momento:
 }
 ```
 
-## Métodos por tabla ##
+#### Métodos por tabla ####
 ```javascript
 //agrega una columna a la tabla especificada
 dynamicPg.table(tableName).addColumn({
