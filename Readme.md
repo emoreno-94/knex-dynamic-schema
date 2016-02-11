@@ -42,8 +42,8 @@ dynamicPg.dropTable(tableName);
 dynamicPg.renameTable(oldName, newName);
 ```
 
-Propiedades permitidas por todos los tipos: default, primary, unique, notNullable, nullable, unsigned.
-***Todas son tipo boolean salvo *default*
+Propiedades permitidas por todos los tipos: `default`, `primary`, `unique`, `notNullable`, `nullable`, `unsigned`.
+***Todas son tipo `boolean` salvo `default`
 
 Tipos soportados por el momento:
 ```javascript
@@ -53,16 +53,16 @@ Tipos soportados por el momento:
 //con opciones especiales
 {
     type: 'incremental',
-    ammount: int //por defecto 1
+    ammount: [int] //por defecto 1
 },
 {
     type: 'string',
-    length: int //por defecto 255
+    length: [int] //por defecto 255
 },
 {
     type: 'float', 'decimal',
-    precision: int, //por defecto 8
-    scale: int  //por defecto 2
+    precision: [int], //por defecto 8
+    scale: [int]  //por defecto 2
 },
 {
     type: 'timestamp',
@@ -70,8 +70,8 @@ Tipos soportados por el momento:
 },
 {
     type: 'geom',
-    srid: int   //por defecto 4326
-    subtype: string
+    srid: [int]   //por defecto 4326
+    subtype: [string]
 }
 ```
 
@@ -91,6 +91,6 @@ dynamic.table(tableName).dropColumn(columnName);
 //renombra una columna
 dynamic.table(tableName).renameColumn(oldName, newName);
 
-//realizar operaciones pobre la tabla tipo knex
+//realizar operaciones sobre la tabla tipo knex
 dynamicPg.table(tableName).[cosas de knex como where, del, ...]
 ```
