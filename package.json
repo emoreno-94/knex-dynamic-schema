@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bluebird": "^3.2.2",
+    "knex": "^0.10.0-rc1",
+    "knex-orm": "0.0.4",
+    "knex-postgis": "^0.1.8",
+    "pg": "^4.4.4"
+  }
+}

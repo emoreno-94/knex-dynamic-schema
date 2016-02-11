@@ -1,0 +1,4 @@
+#settings ide
+.idea
+#npm modules
+node_modules
