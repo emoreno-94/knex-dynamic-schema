@@ -1,4 +1,6 @@
-Para poder usar el modulo, primero se debe establecer una conexion con ayuda de knex
+#Instrucciones#
+
+Para poder usar el módulo, primero se debe establecer una conexion con ayuda de knex
 ```javascript
 var knex = require('knex')({
     client: 'pg',
@@ -16,7 +18,7 @@ Posterior a lo cual ya se está en condiciones de usar *dynamicPg*:
 
 ### Inicialización ###
 ```javascript
-var dynamicPg = require('./dynamicPg')(knex, schemaName);   //schemaNema -> nombre del esquema a usar
+var dynamicPg = require('dynamicPg')(knex, schemaName);   //schemaNema -> nombre del esquema a usar
 ```
 
 ### Métodos ###
@@ -25,7 +27,7 @@ var dynamicPg = require('./dynamicPg')(knex, schemaName);   //schemaNema -> nomb
 ```javascript
 //Crea la tabla correspondiente en la base de datos
 dynamicPg.createTable({
-    tableName: 'table',
+    tableName: [string],
     attributes: {
         attr_1: {
             type: [algun tipo permitido],
@@ -34,10 +36,10 @@ dynamicPg.createTable({
 });
 
 //Elimina la tabla respectiva
-dynamic.dropTable(tableName);
+dynamicPg.dropTable(tableName);
 
 //Renombrar una tabla
-dynamic.renameTable(oldName. newName);
+dynamicPg.renameTable(oldName, newName);
 ```
 
 Propiedades permitidas por todos los tipos: default, primary, unique, notNullable, nullable, unsigned.
@@ -46,7 +48,7 @@ Propiedades permitidas por todos los tipos: default, primary, unique, notNullabl
 Tipos soportados por el momento:
 ```javascript
 //simples sin propiedades extras (salvo las mencianadas anteriormente)
---> 'integer', 'boolean', 'text', 'bigInteger', 'date', 'dateTime', 'time', 'timestamps'
+--> type: 'integer', 'boolean', 'text', 'bigInteger', 'date', 'dateTime', 'time', 'timestamps'
 
 //con opciones especiales
 {
