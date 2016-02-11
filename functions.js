@@ -26,7 +26,7 @@ module.exports = function (knex, nameSchema) {
         'createTable': function (data) {
             return getTables(knex, nameSchema)
                 .then(function () {
-                    if (!tables[data.tableName]){
+                    if (tables[data.tableName]){
                         return Promise.resolve({});
                     } else {
                         return knex.schema.withSchema(nameSchema).createTable(data.tableName, function (table) {

@@ -12,7 +12,7 @@ var knex = require('knex')({
 });
 
 var dinamicPg = require('./dinamicPg')(knex, 'pruebas');
-/*
+
 dinamicPg.createTable({
     tableName: 'test',
     attributes: {
@@ -33,16 +33,15 @@ dinamicPg.createTable({
     }
 }).then(function() {
     return dinamicPg.table('test').addColumn('lalala', {type: 'integer', default: 7});
-    {name: 'lalala', attributes: {type: 'integer', default: 7}}
 });
-*/
+
 //return dinamicPg.table('test').addColumn('lalaqweqwela', {type: 'integer', default: 20});
 /*
 dinamicPg.table('test').insert({
     numeritos: 5,
     str: 'soy un string'
 });*/
-
+/*
 dinamicPg.table('test').withKnex().where('str', 'soy un string').del()
     .then(function(la) {
         console.log('no error')
@@ -50,4 +49,4 @@ dinamicPg.table('test').withKnex().where('str', 'soy un string').del()
     .catch(function(err){
         console.log('error')
     });
-dinamicPg.table('test').withKnex().dropColumn('numeritos');
+dinamicPg.table('test').withKnex().dropColumn('numeritos');*/
