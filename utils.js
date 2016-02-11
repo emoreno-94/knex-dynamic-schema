@@ -13,7 +13,7 @@ function createColumn(table, attrName, data) {
         column = table[data.type](attrName, data.precision ? data.precision: 8, data.scale ? data.scale: 2);
     else if (data.type === 'timestamp')
         column = table.timestamp(attrName).defaultTo(knex.fn.now());
-    else if (data.type === 'geom') {
+    else if (data.type === 'geometry') {
         column = table.specificType(attrName, 'GEOMETRY(' + data.subtype + ', ' + (data.srid ? data.srid : 4326) + ')');
     }
 

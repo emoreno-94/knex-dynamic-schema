@@ -13,40 +13,55 @@ var knex = require('knex')({
 
 var dinamicPg = require('./dinamicPg')(knex, 'pruebas');
 
+//testeo de metodos
+//creacion de tablas
 dinamicPg.createTable({
-    tableName: 'test',
-    attributes: {
-        numeritos: {
+    'tableName': 'tabla_1',
+    'attributes': {
+        'numero': {
             type: 'integer'
         },
-        geometriaxD: {
-            type: 'geom',
-            srid: 4326,
-            subtype: 'POINT'
+        'string': {
+            'type': 'string',
+            'length': 50
         },
-        str: {
-            type: 'string'
+        'texto': {
+            'type': 'text'
         },
-        te: {
-            type: 'text'
+        'yeometria': {
+            'type': 'geometry',
+            'subtype': 'POINT'
         }
     }
-}).then(function() {
-    return dinamicPg.table('test').addColumn('lalala', {type: 'integer', default: 7});
-});
-
-//return dinamicPg.table('test').addColumn('lalaqweqwela', {type: 'integer', default: 20});
-/*
-dinamicPg.table('test').insert({
-    numeritos: 5,
-    str: 'soy un string'
-});*/
-/*
-dinamicPg.table('test').withKnex().where('str', 'soy un string').del()
-    .then(function(la) {
-        console.log('no error')
+}).then(function () {
+   return dinamicPg.createTable({
+       'tableName': 'tabla_2',
+       'attributes': {
+           'texto_2': {
+               'type': 'text'
+           },
+           'yeometria_2': {
+               'type': 'geometry',
+               'subtype': 'POINT'
+           }
+       }
+   })
+}).then(function () {
+    //remonbre de tablas
+    return dinamicPg.renameTable('tabla_2', 'tabla_renombrada')
+}).then(function () {
+    //insercion de cosas
+    return dinamicPg.table('tabla_renombrada').insert({
+        texto_2: 'soy texto loco'
+    }).then(function () {
+        return dinamicPg.table('tabla_1').insert({
+            numero: 8,
+            string: 'stringcito',
+            'texto': 'textootxet'
+        })
     })
-    .catch(function(err){
-        console.log('error')
-    });
-dinamicPg.table('test').withKnex().dropColumn('numeritos');*/
+}).then(function () {
+    return dinamicPg.table('tabla_1').where('numero', 8).del()
+}).then(function() {
+    return dinamicPg.dropTable('tabla_renombrada');
+});
