@@ -57,11 +57,22 @@ dinamicPg.createTable({
         return dinamicPg.table('tabla_1').insert({
             numero: 8,
             string: 'stringcito',
-            'texto': 'textootxet'
+            'texto': 'textootxet',
+            yeometria: 'SRID=4326;POINT(-70 -30)'
         })
     })
 }).then(function () {
-    return dinamicPg.table('tabla_1').where('numero', 8).del()
+    //return dinamicPg.table('tabla_1').where('numero', 8).del()
 }).then(function() {
-    return dinamicPg.dropTable('tabla_renombrada');
+    //return dinamicPg.dropTable('tabla_renombrada');
+}).then(function () {
+    return dinamicPg.table('tabla_1').renameColumn('numero', 'numero_renombrado');
+}).then(function () {
+    return dinamicPg.table('tabla_1').addColumn({
+        columnName: 'newCol',
+        properties: {
+            type: 'integer',
+            default: 5
+        }
+    });
 });

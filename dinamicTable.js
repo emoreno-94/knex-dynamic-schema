@@ -10,9 +10,9 @@ module.exports = function(knex, nameSchema) {
                 tableDb.dropColumn(column);
             });
         };
-        ret.addColumn = function(column, attr) {
+        ret.addColumn = function(data) {
             return knex.schema.withSchema(nameSchema).table(name, function(tableDb) {
-                return utils.createColumn(tableDb, column, attr)
+                return utils.createColumn(tableDb, data.columnName, data.properties)
             }).then(function() {return Promise.resolve({})});
         };
         ret.renameColumn = function(from, to) {
