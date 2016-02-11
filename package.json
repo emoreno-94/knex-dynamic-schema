@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "bluebird": "^3.2.2",
-    "knex": "^0.10.0-rc1",
-    "pg": "^4.4.4"
-  }
-}
