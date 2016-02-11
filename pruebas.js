@@ -11,7 +11,7 @@ var knex = require('knex')({
     }
 });
 
-var dynamicPg = require('./index')(knex, 'pruebas');
+var dynamicPg = require('./lib/index')(knex, 'pruebas');
 
 //testeo de metodos
 //creacion de tablas
