@@ -1,0 +1,25 @@
+{
+  "name": "knex-simple-interface",
+  "version": "0.1.0",
+  "description": "Modulo para facilitar el uso de knex",
+  "main": "index.js",
+  "dependencies": {
+    "knex": "^0.10.0-rc1",
+    "bluebird": "^3.2.2",
+    "pg": "^4.4.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emoreno-94/knex-simple-interface.git"
+  },
+  "author": "Edward Moreno <edward.moreno@ing.uchile.cl>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emoreno-94/knex-simple-interface/issues"
+  },
+  "homepage": "https://github.com/emoreno-94/knex-simple-interface"
+}
