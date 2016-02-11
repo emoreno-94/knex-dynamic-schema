@@ -17,34 +17,40 @@ var dynamicPg = require('./lib/index')(knex, 'pruebas');
 //creacion de tablas
 dynamicPg.createTable({
     'tableName': 'tabla_1',
-    'attributes': {
-        'numero': {
+    'attributes': [
+        {
+            columnName: 'numero',
             type: 'integer'
         },
-        'string': {
-            'type': 'string',
-            'length': 50
+        {
+            columnName: 'string',
+            type: 'string',
+            length: 50
         },
-        'texto': {
-            'type': 'text'
+        {
+            columnName: 'texto',
+            type: 'text'
         },
-        'yeometria': {
-            'type': 'geometry',
-            'subtype': 'POINT'
+        {
+            columnName: 'yeometria',
+            type: 'geometry',
+            subtype: 'POINT'
         }
-    }
+    ]
 }).then(function () {
     return dynamicPg.createTable({
-        'tableName': 'tabla_2',
-        'attributes': {
-            'texto_2': {
-                'type': 'text'
+        tableName: 'tabla_2',
+        attributes: [
+            {
+                columnName: 'texto_2',
+                type: 'text'
             },
-            'yeometria_2': {
-                'type': 'geometry',
-                'subtype': 'POINT'
+            {
+                columnName: 'yeometria_2',
+                type: 'geometry',
+                subtype: 'POINT'
             }
-        }
+        ]
     })
 }).then(function () {
     //remonbre de tablas
@@ -70,9 +76,7 @@ dynamicPg.createTable({
 }).then(function () {
     return dynamicPg.table('tabla_1').addColumn({
         columnName: 'newCol',
-        properties: {
-            type: 'integer',
-            default: 5
-        }
+        type: 'integer',
+        default: 5
     });
 });
