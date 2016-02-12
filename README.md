@@ -1,5 +1,5 @@
 #knex-dynamic-schema#
-Este modulo facilita la construccion dinamica de tablas en una base de datos. Posee funcionalidades como la
+Este módulo facilita la construccion dinamica de tablas en una base de datos. Posee funcionalidades como la
 creación y eliminación de tablas/columnas.
   
 #Instalación#
