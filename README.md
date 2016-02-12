@@ -2,14 +2,14 @@
 Este modulo facilita la construccion dinamica de tablas en una base de datos. Posee funcionalidades como la
 creación y eliminación de tablas/columnas.
   
-#Instalación
+#Instalación#
 ```bash
 npm install knex-dynamic-schema
 ```
 
 #Instrucciones de uso#
 
-Para poder usar el módulo, primero se debe establecer una conexion con ayuda de knex
+Para poder usar el módulo, primero se debe establecer una conexión con ayuda de knex
 ```javascript
 var knex = require('knex')({
     client: 'pg',
@@ -23,11 +23,10 @@ var knex = require('knex')({
 });
 ```
 
-Posterior a lo cual ya se está en condiciones de usar *dynamicSchema*:
-
 ### Inicialización ###
 ```javascript
-var dynamicSchema = require('knex-dynamic-schema')(knex, schemaName);   //schemaNema -> nombre del esquema a usar
+//schemaName -> nombre del esquema a usar, por defecto 'public'
+var dynamicSchema = require('knex-dynamic-schema')(knex[, schemaName]); 
 ```
 
 ### Métodos ###
@@ -78,9 +77,9 @@ Tipos soportados por el momento:
     scale: <int>  //por defecto 2
 },
 {
-    type: 'geom',   //sólo disponible en base de datos postgres con extensión postgis
-    srid: <int>   //por defecto 4326
-    subtype: <string>
+    type: 'geometry',   //sólo disponible en base de datos postgres con extensión postgis
+    srid: <int>,   //por defecto 4326
+    subtype: <string>   //subtipos permitidos: 'POINT', 'LINESTRING', 'POLYGON',...
 }
 ```
 
