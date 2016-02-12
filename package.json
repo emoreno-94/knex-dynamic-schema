@@ -1,12 +1,11 @@
 {
   "name": "knex-dynamic-schema",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Modulo para facilitar el uso de knex",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "knex": "^0.10.0-rc1",
-    "bluebird": "^3.2.2",
-    "pg": "^4.4.4"
+    "bluebird": "^3.2.2"
   },
   "devDependencies": {},
   "scripts": {
