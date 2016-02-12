@@ -1,5 +1,5 @@
 {
-  "name": "knex-simple-interface",
+  "name": "knex-dynamic-schema",
   "version": "0.1.0",
   "description": "Modulo para facilitar el uso de knex",
   "main": "index.js",
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/emoreno-94/knex-simple-interface.git"
+    "url": "https://github.com/emoreno-94/knex-dynamic-schema.git"
   },
   "author": "Edward Moreno <edward.moreno@ing.uchile.cl>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/emoreno-94/knex-simple-interface/issues"
+    "url": "https://github.com/emoreno-94/knex-dynamic-schema/issues"
   },
-  "homepage": "https://github.com/emoreno-94/knex-simple-interface"
+  "homepage": "https://github.com/emoreno-94/knex-dynamic-schema"
 }
