@@ -11,11 +11,11 @@ var knex = require('knex')({
     }
 });
 
-var dynamicPg = require('./lib/index')(knex, 'pruebas');
+var dynamicSchema = require('./lib/index')(knex, 'pruebas');
 
 //testeo de metodos
 //creacion de tablas
-dynamicPg.createTable({
+dynamicSchema.createTable({
     'tableName': 'tabla_1',
     'attributes': [
         {
@@ -38,7 +38,7 @@ dynamicPg.createTable({
         }
     ]
 }).then(function () {
-    return dynamicPg.createTable({
+    return dynamicSchema.createTable({
         tableName: 'tabla_2',
         attributes: [
             {
@@ -54,13 +54,13 @@ dynamicPg.createTable({
     })
 }).then(function () {
     //remonbre de tablas
-    return dynamicPg.renameTable('tabla_2', 'tabla_renombrada')
+    return dynamicSchema.renameTable('tabla_2', 'tabla_renombrada')
 }).then(function () {
     //insercion de cosas
-    return dynamicPg.table('tabla_renombrada').insert({
+    return dynamicSchema.table('tabla_renombrada').insert({
         texto_2: 'soy texto loco'
     }).then(function () {
-        return dynamicPg.table('tabla_1').insert({
+        return dynamicSchema.table('tabla_1').insert({
             numero: 8,
             string: 'stringcito',
             'texto': 'textootxet',
@@ -68,13 +68,13 @@ dynamicPg.createTable({
         })
     })
 }).then(function () {
-    //return dynamicPg.table('tabla_1').where('numero', 8).del()
+    //return dynamicSchema.table('tabla_1').where('numero', 8).del()
 }).then(function() {
-    //return dynamicPg.dropTable('tabla_renombrada');
+    //return dynamicSchema.dropTable('tabla_renombrada');
 }).then(function () {
-    return dynamicPg.table('tabla_1').renameColumn('numero', 'numero_renombrado');
+    return dynamicSchema.table('tabla_1').renameColumn('numero', 'numero_renombrado');
 }).then(function () {
-    return dynamicPg.table('tabla_1').addColumn({
+    return dynamicSchema.table('tabla_1').addColumn({
         columnName: 'newCol',
         type: 'integer',
         default: 5
