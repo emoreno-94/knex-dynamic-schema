@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/emoreno-94/knex-dynamic-schema/issues"
   },
-  "homepage": "https://github.com/emoreno-94/knex-dynamic-schema"
+  "homepage": "https://github.com/emoreno-94/knex-dynamic-schema",
+  "keywords": [
+    "knex",
+    "dynamic",
+    "schema",
+    "simple interface"
+  ]
 }
