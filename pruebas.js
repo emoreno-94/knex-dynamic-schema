@@ -15,6 +15,7 @@ var dynamicSchema = require('./lib/index')(knex, 'pruebas');
 
 //testeo de metodos
 //creacion de tablas
+
 dynamicSchema.createTable({
     'tableName': 'tabla_1',
     'attributes': [

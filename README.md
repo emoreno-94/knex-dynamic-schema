@@ -1,4 +1,13 @@
-#Instrucciones#
+#knex-dynamic-schema#
+Este modulo facilita la construccion dinamica de tablas en una base de datos. Posee funcionalidades como la
+creación y eliminación de tablas/columnas.
+  
+#Instalación
+```bash
+npm install knex-dynamic-schema
+```
+
+#Instrucciones de uso#
 
 Para poder usar el módulo, primero se debe establecer una conexion con ayuda de knex
 ```javascript
@@ -14,36 +23,40 @@ var knex = require('knex')({
 });
 ```
 
-Posterior a lo cual ya se está en condiciones de usar *dynamicPg*:
+Posterior a lo cual ya se está en condiciones de usar *dynamicSchema*:
 
 ### Inicialización ###
 ```javascript
-var dynamicPg = require('dynamicPg')(knex, schemaName);   //schemaNema -> nombre del esquema a usar
+var dynamicPg = require('knex-dynamic-schema')(knex, schemaName);   //schemaNema -> nombre del esquema a usar
 ```
-
+Objeto mal construido!!!
 ### Métodos ###
 *Importante: Todos los métodos se concatenan en base a promesas*
 #### Métodos para el esquema ####
 ```javascript
 //Crea la tabla correspondiente en la base de datos
-dynamicPg.createTable({
+dynamicSchema.createTable({
     tableName: [string],
-    attributes: {
-        attr_1: {
-            type: [algun tipo permitido],
-            [props]: [value_prop], ...  //distintos tipos tienes distintas propiedades
+    attributes: [
+        {
+            columnName: [string],
+            type: [string], // algun tipo permitido
+            [string]: [string], ...  //distintos tipos tienes distintas propiedades como: primary: true
+        },{
+            ...
         }
+    ]
 });
 
 //Elimina la tabla respectiva
-dynamicPg.dropTable(tableName);
+dynamicSchema.dropTable(tableName);
 
 //Renombrar una tabla
-dynamicPg.renameTable(oldName, newName);
+dynamicSchema.renameTable(oldName, newName);
 ```
 
 Propiedades permitidas por todos los tipos: `default`, `primary`, `unique`, `notNullable`, `nullable`, `unsigned`.
-***Todas son tipo `boolean` salvo `default`
+***Todas son tipo `bObjeto mal construido!!!oolean` salvo `default`
 
 Tipos soportados por el momento:
 ```javascript
@@ -69,7 +82,7 @@ Tipos soportados por el momento:
     standard : mmmmm...no se
 },
 {
-    type: 'geom',
+    type: 'geom',   //sólo disponible en base de datos postgres con extensión postgis
     srid: [int]   //por defecto 4326
     subtype: [string]
 }
@@ -78,19 +91,18 @@ Tipos soportados por el momento:
 #### Métodos por tabla ####
 ```javascript
 //agrega una columna a la tabla especificada
-dynamicPg.table(tableName).addColumn({
+dynamicSchema.table(tableName).addColumn({
     columnName: [string],
-    properties: {
-        type: ...//las mismas que antes
-    }
+    type: [string], // algun tipo permitido
+    [string]: [string], ...  //distintos tipos tienes distintas propiedades como: primary: true
 });
 
 //elimina una columna de la tabla
-dynamic.table(tableName).dropColumn(columnName);
+dynamicSchema.table(tableName).dropColumn(columnName);
 
 //renombra una columna
-dynamic.table(tableName).renameColumn(oldName, newName);
+dynamicSchema.table(tableName).renameColumn(oldName, newName);
 
 //realizar operaciones sobre la tabla tipo knex
-dynamicPg.table(tableName).[cosas de knex como where, del, ...]
+dynamicSchema.table(tableName).[cosas de knex como where, del, ...]
 ```
